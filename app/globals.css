@@ -1,26 +1,292 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --washi: #f4efe4;
+  --washi-deep: #ece5d3;
+  --washi-shadow: #ddd2b6;
+  --sumi: #1b1a17;
+  --sumi-soft: #2c2a25;
+  --kebairo: #5a544a;
+  --nezumi: #8a8377;
+  --akane: #8a3a2a;
+  --kintsugi: #8a6a3b;
+  --aigami: #2f3a48;
+  --hairline: rgba(27, 26, 23, 0.12);
+  --hairline-strong: rgba(27, 26, 23, 0.28);
+  --background: var(--washi);
+  --foreground: var(--sumi);
+  --muted: var(--kebairo);
+  --accent: var(--akane);
+  --gold: var(--kintsugi);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --washi: #131210;
+    --washi-deep: #1a1815;
+    --washi-shadow: #0e0d0b;
+    --sumi: #ece5d3;
+    --sumi-soft: #d8cfb8;
+    --kebairo: #a8a091;
+    --nezumi: #6f6a5e;
+    --akane: #c87a64;
+    --kintsugi: #c9a16a;
+    --aigami: #8aa0b4;
+    --hairline: rgba(236, 229, 211, 0.12);
+    --hairline-strong: rgba(236, 229, 211, 0.26);
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-gold: var(--gold);
+  --color-washi: var(--washi);
+  --color-sumi: var(--sumi);
+  --font-sans: var(--font-geist-sans), "Hiragino Mincho ProN", "Yu Mincho", ui-serif, Georgia, serif;
+  --font-serif: "Cormorant Garamond", "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), "Shippori Mincho", ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--washi);
+  color: var(--sumi);
+  font-family: var(--font-sans);
+  font-feature-settings: "palt" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.005em;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100dvh;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, var(--washi-deep) 0%, transparent 70%),
+    linear-gradient(180deg, var(--washi) 0%, var(--washi) 100%);
+  background-attachment: fixed;
+  color: var(--sumi);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+::selection {
+  background: var(--akane);
+  color: var(--washi);
+}
+
+::-moz-selection {
+  background: var(--akane);
+  color: var(--washi);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--hairline-strong);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nezumi);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--sumi);
+}
+
+h1 {
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.75rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.625rem, 1.2rem + 1.4vw, 2.25rem);
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+p {
+  color: var(--sumi-soft);
+  hanging-punctuation: first last;
+}
+
+a {
+  color: var(--sumi);
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), color 0.3s ease;
+}
+
+a:hover {
+  background-size: 100% 1px;
+  color: var(--akane);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--hairline);
+  margin: 3rem 0;
+}
+
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 1px solid var(--akane);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.kanji {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", "MS Mincho", serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.hairline {
+  border-color: var(--hairline);
+}
+
+.hairline-strong {
+  border-color: var(--hairline-strong);
+}
+
+.vermillion {
+  color: var(--akane);
+}
+
+.gold-leaf {
+  background: linear-gradient(135deg, #b8893a 0%, #e6c474 45%, #8a6a3b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ink-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--akane);
+  color: var(--washi);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  border-radius: 2px;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  position: relative;
+}
+
+.ink-stamp::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid currentColor;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.washi-card {
+  background: var(--washi);
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 var(--hairline),
+    0 30px 60px -40px rgba(27, 26, 23, 0.18);
+  position: relative;
+}
+
+.washi-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--hairline);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.enso {
+  border-radius: 50%;
+  border: 1px solid var(--sumi);
+  position: relative;
+}
+
+.enso::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 18%;
+  width: 14%;
+  height: 1px;
+  background: var(--washi);
+  transform: rotate(-25deg);
+  transform-origin: left center;
+}
+
+.divider-dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--nezumi);
+  border-radius: 50%;
+  vertical-align: middle;
+  margin: 0 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
