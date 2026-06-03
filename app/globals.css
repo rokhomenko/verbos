@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --washi: #f4efe4;
-  --washi-deep: #ece5d3;
-  --washi-shadow: #ddd2b6;
-  --sumi: #1b1a17;
-  --sumi-soft: #2c2a25;
-  --kebairo: #5a544a;
-  --nezumi: #8a8377;
-  --akane: #8a3a2a;
-  --kintsugi: #8a6a3b;
-  --aigami: #2f3a48;
-  --hairline: rgba(27, 26, 23, 0.12);
-  --hairline-strong: rgba(27, 26, 23, 0.28);
-  --background: var(--washi);
+  --paper: #ffffff;
+  --washi: #dcebc8;
+  --washi-deep: #c8d8a8;
+  --washi-shadow: #b0c290;
+  --sumi: #0a0a0a;
+  --sumi-soft: #1f1f1f;
+  --kebairo: #6f6e54;
+  --nezumi: #9a9c84;
+  --akane: #5d6b30;
+  --kintsugi: #8a7530;
+  --aigami: #3d4a3a;
+  --hairline: rgba(10, 10, 10, 0.10);
+  --hairline-strong: rgba(10, 10, 10, 0.25);
+  --background: var(--paper);
   --foreground: var(--sumi);
   --muted: var(--kebairo);
   --accent: var(--akane);
@@ -22,18 +23,19 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --washi: #131210;
-    --washi-deep: #1a1815;
-    --washi-shadow: #0e0d0b;
-    --sumi: #ece5d3;
-    --sumi-soft: #d8cfb8;
-    --kebairo: #a8a091;
-    --nezumi: #6f6a5e;
-    --akane: #c87a64;
-    --kintsugi: #c9a16a;
-    --aigami: #8aa0b4;
-    --hairline: rgba(236, 229, 211, 0.12);
-    --hairline-strong: rgba(236, 229, 211, 0.26);
+    --paper: #0e0f0a;
+    --washi: #1c2014;
+    --washi-deep: #262a1c;
+    --washi-shadow: #11140a;
+    --sumi: #ece8d4;
+    --sumi-soft: #c8c4ae;
+    --kebairo: #9a9884;
+    --nezumi: #6a6852;
+    --akane: #a8b870;
+    --kintsugi: #d4b870;
+    --aigami: #6a8060;
+    --hairline: rgba(236, 232, 212, 0.10);
+    --hairline-strong: rgba(236, 232, 212, 0.25);
   }
 }
 
@@ -51,7 +53,7 @@
 }
 
 html {
-  background: var(--washi);
+  background: var(--paper);
   color: var(--sumi);
   font-family: var(--font-sans);
   font-feature-settings: "palt" 1, "liga" 1, "calt" 1;
@@ -63,10 +65,7 @@ html {
 
 body {
   min-height: 100dvh;
-  background:
-    radial-gradient(ellipse 90% 60% at 50% 0%, var(--washi-deep) 0%, transparent 70%),
-    linear-gradient(180deg, var(--washi) 0%, var(--washi) 100%);
-  background-attachment: fixed;
+  background: var(--paper);
   color: var(--sumi);
   font-weight: 400;
   line-height: 1.7;
@@ -74,12 +73,12 @@ body {
 
 ::selection {
   background: var(--akane);
-  color: var(--washi);
+  color: var(--paper);
 }
 
 ::-moz-selection {
   background: var(--akane);
-  color: var(--washi);
+  color: var(--paper);
 }
 
 ::-webkit-scrollbar {
@@ -205,7 +204,7 @@ a:focus-visible {
 }
 
 .gold-leaf {
-  background: linear-gradient(135deg, #b8893a 0%, #e6c474 45%, #8a6a3b 100%);
+  background: linear-gradient(135deg, #4a5a25 0%, #a8b855 45%, #6b7a30 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -218,13 +217,13 @@ a:focus-visible {
   width: 2.5rem;
   height: 2.5rem;
   background: var(--akane);
-  color: var(--washi);
+  color: var(--paper);
   font-family: var(--font-serif);
   font-size: 1rem;
   border-radius: 2px;
   box-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.05),
-    0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
   position: relative;
 }
 
@@ -243,7 +242,7 @@ a:focus-visible {
   border-radius: 2px;
   box-shadow:
     0 1px 0 var(--hairline),
-    0 30px 60px -40px rgba(27, 26, 23, 0.18);
+    0 30px 60px -40px rgba(0, 0, 0, 0.08);
   position: relative;
 }
 
@@ -269,7 +268,7 @@ a:focus-visible {
   right: 18%;
   width: 14%;
   height: 1px;
-  background: var(--washi);
+  background: var(--paper);
   transform: rotate(-25deg);
   transform-origin: left center;
 }

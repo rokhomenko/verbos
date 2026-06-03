@@ -17,6 +17,25 @@ function Eye({ className = "" }: { className?: string }) {
   );
 }
 
+function Gaze({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 64 40"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <path d="M2 20 C 16 4, 48 4, 62 20 C 48 36, 16 36, 2 20 Z" />
+      <circle cx="32" cy="20" r="8" />
+      <circle cx="32" cy="20" r="2" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 const tenses = [
   {
     name: "Presente",
@@ -108,7 +127,7 @@ export default function Home() {
           </div>
 
           <div className="md:col-span-4 flex justify-end items-end">
-            <Eye className="w-56 h-[9rem] text-sumi opacity-[0.08] select-none" />
+            <Gaze className="w-56 h-[28rem] text-sumi opacity-[0.10] select-none" />
           </div>
         </section>
 
